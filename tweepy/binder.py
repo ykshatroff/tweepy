@@ -59,6 +59,7 @@ def bind_api(**config):
                                                         api.wait_on_rate_limit_notify)
             self.parser = kwargs.pop('parser', api.parser)
             self.session.headers = kwargs.pop('headers', {})
+            self.session.headers['Connection'] = 'close'
             self.build_parameters(args, kwargs)
 
             # Pick correct URL root to use
