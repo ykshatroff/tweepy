@@ -1,6 +1,5 @@
 #!/usr/bin/env python
-#from distutils.core import setup
-import re, uuid
+import re
 from setuptools import setup, find_packages
 
 VERSIONFILE = "tweepy/__init__.py"
@@ -13,6 +12,8 @@ if mo:
 else:
     raise RuntimeError("Unable to find version string in %s." % (VERSIONFILE,))
 
+reqs = open('requirements.txt').readlines()
+
 setup(name="tweepy",
       version=version,
       description="Twitter library for python",
@@ -21,12 +22,7 @@ setup(name="tweepy",
       author_email="tweepy@googlegroups.com",
       url="http://github.com/tweepy/tweepy",
       packages=find_packages(exclude=['tests']),
-      install_requires=[
-          "requests>=2.11.1",
-          "requests_oauthlib>=0.7.0",
-          "six>=1.10.0",
-          "PySocks>=1.5.7",
-      ],
+      install_requires=reqs,
       keywords="twitter library",
       classifiers=[
           'Development Status :: 4 - Beta',
